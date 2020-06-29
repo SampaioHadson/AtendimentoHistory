@@ -2,7 +2,8 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 
 import Home from './pages/home/Home'
@@ -15,6 +16,7 @@ export default function router(){
     return(
         <Router>
             <Switch>
+                <Redirect from='/' to='/login' />
                 <Route path="/home">
                     <Home/>
                 </Route>
