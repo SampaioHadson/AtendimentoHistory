@@ -1,0 +1,309 @@
+.container-home{
+    width: 100vw;
+    height: 100vh;
+    background-color: #f4f4f4;
+    display: flex;
+}
+
+.navbar-home{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #ffffff;
+}
+
+.work-area{
+    top:60px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: block;
+}
+
+.work-area-header{
+    width: 100%;
+    height: 120px;
+    background-color: #07889B;
+    display: flex;
+    align-items: center;
+}
+
+.title-area-home{
+    display: flex;
+    height: 80%;
+    align-items: center;
+    width: 200px;
+    border-right: 5px solid #ffffff;
+}
+
+.title-function{
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+ }
+
+.work-area-activities{
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.source-area{
+    margin-left: 10px;
+    display: flexbox;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/**/
+.input-container-home{
+    position: relative;
+    background-color: black;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  
+  /*#9e9e9e*/
+  .input-form-home{
+      border: 0;
+      border-bottom: 2px solid #ffffff;
+      outline: none;
+      color: black;
+      background-color: #07889B ;
+      transition: .2s ease-in-out;
+      box-sizing: border-box;
+      width: 100%;
+      height: 40px;
+      font-size: 18px;
+  }
+  
+  .label-form-home{
+      top: 25px;
+      left: 0;
+      right: 0;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      position: absolute;
+      cursor: text;
+      transition: .2s ease-in-out;
+      box-sizing: border-box;
+      width: 120px;
+      height: 1px;
+      font-size: 18px;
+  }
+  
+  .input-form-home:valid,
+  .input-form-home:focus {
+    border-bottom: 2px solid #ffffff; 
+    color: #ffffff;
+  }
+  
+  .input-form-home:valid + .label-form-home,
+  .input-form-home:focus + .label-form-home{
+    color: #ffffff;
+    font-size: 14px;
+    top: 3px;
+    pointer-events: none;
+  }
+  
+/**/
+
+
+.autoContainer{
+    position: absolute;
+    overflow-y: scroll;
+    height:200px;
+    width: 200px;
+    margin: 0;
+    background-color: #f4f4f4f4;
+    display: block;
+}
+.option-input-auto{
+    margin-top: 10px;
+    margin-left: 5%;
+    width: 90%;
+    height: 30px;
+    outline: none;
+}
+
+.option-input-auto:hover,
+.option-input-auto:focus{
+    border-bottom: 1px solid blue;
+}
+
+.span-option{
+    font-size: 16pt;
+}
+
+
+/*CSS LIST*/
+.list{
+    margin-top: 20px;
+    height: 100%;
+    width: 32%;
+    margin-left: 1%;
+    border-radius: 30px 30px 0px  0px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;    
+}::-webkit-scrollbar {
+    width: 0px;
+  }
+
+.list-header-atendendo{ 
+    width: 100%;
+    height: 60px;
+    border-radius: 30px 30px 0px  0px;
+    background-color: #FF0303;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+} 
+
+.list-header-atendendo + .list-content{
+    background-color: #FFB8B8;
+    position: absolute;
+    margin-top:60px;
+    padding-bottom: 300px;
+    width: 32%;
+    height: 100%;
+    display: block;
+    overflow-y: auto;    
+}   
+
+.list-header-pendente{
+    width: 100%;
+    height: 60px;
+    border-radius: 30px 30px 0px  0px;
+    background-color: #CD7003;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+.list-header-pendente + .list-content{
+    background-color: #F8E2C8;
+    position: absolute;
+    margin-top:60px;
+    padding-bottom: 300px;
+    width: 32%;
+    height: 100%;
+    display: block;
+    overflow-y: auto;   
+}
+
+.list-header-concluido{
+    width: 100%;
+    height: 60px;
+    border-radius: 30px 30px 0px  0px;
+    background-color: #199704;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+.list-header-concluido + .list-content{
+    background-color: #B6DAB0;
+    position: absolute;
+    margin-top:60px;
+    padding-bottom: 300px;
+    width: 32%;
+    height: 100%;
+    display: block;
+    overflow-y: auto;       
+}
+
+.list-title{
+    font-size: 16pt;
+    font-weight: 500;
+    color: #ffffff;
+}
+/*CSS LIST*/
+
+
+/*CSS CARD*/
+.card{      
+    border-radius: 10px;    
+    margin-top: 10px;
+    margin-left: 2.5%;
+    width: 95%;
+    height: 100px;
+    background-color: #ffffff;
+    display: flex;
+}
+.card-content{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-identification{
+    margin-top: 10px;
+    margin-left: 2%;
+    width: 48%;
+    font-size: 12pt;
+}
+.card-time{
+    margin-top: 10px;
+    width: 24%;
+    text-align: end;
+    margin-left: 1%;
+    font-size: 12pt;
+}
+.card-description{  
+    width: 98%;
+    margin-left: 2%;
+    font-size: 12pt;
+}
+
+.card-options{
+    width: 10%;
+    height: 100%;   
+}
+
+.card-options-icon{
+    color: #000000;
+    opacity: 0.5;
+    margin-top: 10px;
+    margin-left: 25%;
+}
+
+.card-options-icon:hover{
+    opacity: 1;
+    transition: opacity 0.1s;
+}
+/*CSS CARD*/
+
+
+
+
+.create-atendimento-btn{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    font-size: 12pt;
+    font-weight: 500;
+    color: #07889B;
+    background-color: #ffffff;
+    outline: none;
+}
+.create-atendimento-btn:focus,
+.create-atendimento-btn:hover{
+    border: 2px dashed #07889B;
+}
+
+
+

@@ -1,0 +1,214 @@
+.container-atendimento{
+    position: absolute;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.8;
+}
+
+.work-area-atendimento{
+    position: absolute;
+    z-index: 11;
+    width: 50vw;
+    height: 95vh;
+    margin-left: 25vw;
+    margin-top: 2.5vh;
+    background-color: white;
+    display: block;
+    overflow-y: scroll;
+}
+
+.row-line{
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+
+
+/*INPUT CSS*/
+.input-container-atendimento{
+    position: relative;
+    width: 45%;
+    height: 40px;
+    margin-left: 2.5%;
+    margin-bottom: 15px;
+    background-color: black;
+    margin-top: 15px;
+  }
+  
+  .input-form-atendimento{
+      border: 0;
+      border-bottom: 2px solid #07889B;
+      outline: none;
+      color: black;
+      background-color: #ffffff ;
+      transition: .2s ease-in-out;
+      box-sizing: border-box;
+      width: 100%;
+      height: 40px;
+      font-size: 12pt;
+  }
+  
+  .label-form-atendimento{
+      top: 25px;
+      left: 0;
+      right: 0;
+      color: #07889B;
+      display: flex;
+      align-items: center;
+      position: absolute;
+      cursor: text;
+      transition: .2s ease-in-out;
+      box-sizing: border-box;
+      width: 120px;
+      height: 1px;
+      font-size: 12pt;
+  }
+  
+  .input-form-atendimento:valid,
+  .input-form-atendimento:focus {
+    border-bottom: 2px solid #07889B; 
+    color: #000000;
+  }
+  
+  .input-form-atendimento:valid + .label-form-atendimento,
+  .input-form-atendimento:focus + .label-form-atendimento{
+    color: #07889B;
+    font-size: 8pt;
+    top: 3px;
+    pointer-events: none;
+  }
+/*INPUT CSS*/
+
+.bnt-source-cliente{
+    height: 40px;
+    width: 40%;
+    margin-left: 5%;
+    margin-top: 15px;
+    font-size: 12pt;
+    font-weight: 500;
+    outline: none;
+    background-color: #07889B;
+    color: #ffffff;
+}
+
+.bnt-source-cliente:hover{
+    background-color: #035460;
+    transition: 0.1s opacity;
+}
+
+.chat-area{
+    position: relative;
+    margin-top: 15px;
+    display: block;
+    width: 95%;
+    margin-left: 2.5%;
+    height: 250px;
+    background-color: #dcdcdc;
+    overflow-y: scroll;
+    padding-bottom: 10px;
+}
+
+/*MESSAGE INPUT*/
+.input-message-area{
+    height: 150px;
+    width: 95%;
+    margin-left: 2.5%;
+    background-color: black;
+    margin-bottom: 15px;
+    display: flex;
+}
+
+textarea{
+    width:80%;
+    background-color: #ffffff;
+    font-size: 12pt;
+    border: 2px solid #07889B;
+    height: 150px;
+    outline: none;
+}
+
+.message-input-btn{
+    width: 20%;
+    height: 100%;
+}
+/*MESSAGE INPUT*/
+
+/*SHARCH*/
+.search-clientes-area{  
+    position: relative;
+    display: none;
+    margin-top: 15px;
+    width: 95%;
+    margin-left: 2.5%;
+    overflow-y: scroll;
+    height: 200px;
+    background-color: aqua;
+}
+/*SHARCH*/
+
+
+/*MESSAGE CSS*/
+.message-row{
+    float: left;
+    width: 100%;
+}
+.message-container-0{
+   padding-top: 5px;
+   padding-bottom: 5px;
+   margin-top: 10px;
+   margin-left: 10px;
+   max-width: 80%;
+   height: height;
+   float: left;
+   background-color: beige;
+   border-radius: 20px;
+}
+.message-container-1{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
+    max-width: 80%;
+    background-color: beige;
+    float: right;
+    border-radius: 20px;
+
+}
+
+.message-content{
+    font-size: 12pt;
+    color: #000000;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.message-information{
+    float: right;
+    color: #000000;
+    font-size: 10pt;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+/*MESSAGE CSS*/
+
+
+/*OPTIONS MESSAGE INPUT*/
+.message-select{
+    margin-top: 15px;
+    font-size: 12pt;
+    width: 30%;
+    margin-left: 2.5%;
+    height: 20px;
+    outline: none;
+    border-bottom: 2px solid #07889B;
+    -webkit-appearance: none;  
+    -moz-appearance: none;
+
+   
+}
+
+/*OPTIONS MESSAGE INPUT*/
+
