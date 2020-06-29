@@ -14,19 +14,15 @@ import Atendimento from './pages/atendimento/Atendimento'
 
 export default function router(){
     return(
-        <Router>
-            <Switch>
-                <Redirect from='/' to='/login' />
+        <Router>   
+            <Switch>  
                 <Route path="/home">
                     <Home/>
                 </Route>
+                <Redirect exact from='/' to='/login'/>  
                 <Route path="/login">
                     <Login/>
                 </Route>
-                <Route path="/atendimento">
-                    <Atendimento/>
-                </Route>
-                
             </Switch>
         </Router>
     )
