@@ -105,7 +105,7 @@
     width: 95%;
     margin-left: 2.5%;
     height: 250px;
-    background-color: #dcdcdc;
+    background-color: #dddddd;
     overflow-y: scroll;
     padding-bottom: 10px;
 }
@@ -132,19 +132,166 @@ textarea{
 .message-input-btn{
     width: 20%;
     height: 100%;
+    outline: none;
+    background-color: #07889B;
+    color: #ffffff;
+    font-size: 12pt;
+    
 }
+
+.message-input-btn:hover{
+    background-color: #035460;
+    transition: 0.2s;
+}
+
 /*MESSAGE INPUT*/
 
 /*SHARCH*/
-.search-clientes-area{  
-    position: relative;
-    display: none;
-    margin-top: 15px;
-    width: 95%;
-    margin-left: 2.5%;
+
+.search-clientes-container{
+    position: fixed;
+    top: 0;
+    display: block;
+    left: 0;
+    z-index: 15;
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+.search-cliente-back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    z-index: 16;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 80%;
+}
+
+.search-cliente-front{
+    position: fixed;
+    width: 80%;
+    z-index: 17;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    display: block;
     overflow-y: scroll;
-    height: 200px;
-    background-color: aqua;
+    background-color: #ffffff;
+    height: 80%;
+}
+
+.search-clientes-area-search{
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    background-color: #ffffff;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.search-clientes-area{  
+    padding-top: 70px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 70px;
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+
+.search-clientes-confirm-area{
+    position: fixed;
+    z-index: 19;    
+    height: 70px;
+    width: 80%;
+    bottom: 10%;
+    left: 10%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-end;
+    justify-items: flex-end;
+}
+
+.table-container{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-tbody-one{
+    height: 40px;
+    font-size: 12pt;
+    font-weight: 500;
+    padding: 0px;
+    background-color: #dddddd;
+    opacity: 0.6;
+    cursor: pointer;
+}
+.table-tbody-one:hover{
+    opacity: 1;
+}
+
+.table-tbody-two:hover{
+    opacity: 1;
+}
+
+.table-tbody-two{
+    height: 40px;
+    font-size: 12pt;
+    font-weight: 500;
+    padding: 0px;
+    background-color: #eeeeee;
+    opacity: 0.6;
+    cursor: pointer;
+}
+.table-td-one{
+    padding-left: 10px;
+    padding-right: 20px ;
+    background-color: #dddddd;
+}
+
+.table-td-two{
+    padding-left: 10px;
+    padding-right: 20px ;
+    background-color: #eeeeee;
+}
+
+.table-td + .table-td{
+    text-align: end;
+}
+
+.serach-clientes-button{
+    width: 120px;
+    height: 60px;
+    background-color: #07889B;
+    color: #ffffff;
+    font-size: 12pt;
+    font-weight: 500;
+    margin-right: 10px;
+    outline: none;
+    border-radius: 10px;
+}
+.serach-clientes-button:hover{
+    background-color: #035460;
+    transition: 0.2s;
+}
+.serach-clientes-button-disable{
+    width: 120px;
+    height: 60px;
+    background-color: #dddddd;
+    color: #ffffff;
+    font-size: 12pt;
+    font-weight: 500;
+    margin-right: 10px;
+    outline: none;
+    border-radius: 10px;
 }
 /*SHARCH*/
 
@@ -162,7 +309,7 @@ textarea{
    max-width: 80%;
    height: height;
    float: left;
-   background-color: beige;
+   background-color: #ffffff;
    border-radius: 20px;
 }
 .message-container-1{
@@ -171,7 +318,7 @@ textarea{
     margin-top: 10px;
     margin-right: 10px;
     max-width: 80%;
-    background-color: beige;
+    background-color: #ffffff;
     float: right;
     border-radius: 20px;
 

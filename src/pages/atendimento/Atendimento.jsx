@@ -1,10 +1,12 @@
 import React,{Component} from 'react'
 import Message from './components/Menssagens'
 import './Atendimento.css'
+import ListUser from './components/ListUsers'
 
 //JSON TESTE
 import canais from '../../jsonTestes/canaisJson'
 import programas from '../../jsonTestes/programasJson'
+import pessoas from '../../jsonTestes/pessoasJson'
 
 export default class Atendimento extends Component{
 
@@ -20,7 +22,10 @@ export default class Atendimento extends Component{
         programaMenssagem:'',
         canalMenssagem: '',
         tipoMenssagem: '',
-        conteudoMenssagem: ''
+        conteudoMenssagem: '',
+        usersFiltre:'',
+        showUserList: false,
+        modify: false
     }
 
 
@@ -50,24 +55,58 @@ export default class Atendimento extends Component{
     }
     handleNome = (e) =>{
         if(this.state.createble){return}
+        if(this.state.modify){return}
         this.setState({...this, nome: e.target.value})
     }
     handleNomeUsual = (e) =>{
         if(this.state.createble){return}
+        if(this.state.modify){return}
         this.setState({...this, nomeUsual: e.target.value})
     }
     handleTelefone = (e) =>{
         if(this.state.createble){return}
+        if(this.state.modify){return}
         this.setState({...this, telefone: e.target.value})
     }
     handleEmail = (e) =>{
         if(this.state.createble){return}
+        if(this.state.modify){return}
         this.setState({...this, email: e.target.value})
     }
 
 
-    handlePrepareSendMessage = () =>{
+    //BUSCAR CLIENTE POR CPF/CNPJ
+    handleSearchUserByCpfCpnj = (number) =>{
+        const pessoasVector = 
+        pessoas.filter(({CpfCnpj}) => CpfCnpj === number)
+        .map((v,k) =>{ return v })
+
+        if(pessoasVector.length > 1 || !pessoasVector[0]){
+            this.setState({
+                cpfCnpj: this.state.cpfCnpj,
+                nome: '',
+                nomeUsual: '',
+                telefone: '',
+                email: '',
+                modify: false
+            })
+            return
+        }
+
+        const {Id, CpfCnpj, Nome, NomeUsual, Telefone, Email} = pessoasVector[0]
+        this.setState({
+            cpfCnpj: CpfCnpj,
+            nome: Nome,
+            nomeUsual: NomeUsual,
+            telefone: Telefone,
+            email: Email,
+            modify: true
+        })
         
+        console.log(pessoasVector)
+    }
+
+    handlePrepareSendMessage = () =>{
         let programaVector = ''
         if(this.state.programaMenssagem){
          programaVector = programas.filter(({Id})=> Id === parseInt(this.state.programaMenssagem))
@@ -80,22 +119,40 @@ export default class Atendimento extends Component{
         if(canalVector[0]){canal = canalVector[0]}
         if(programaVector[0]){programa = programaVector[0]}
         
-
- 
-        
         const dataSend ={
-        Id: '',
-        Atendimento_Id:this.props.idAtendimento,
-        Data:'26/06/2020',
-        Canal: canal,
-        Time:'18:30',
-        Atendente_Id: 1,
-        Programa: programa,
-        Tipo_Menssagem: this.state.tipoMenssagem,
-        Menssagem: this.state.conteudoMenssagem
+            Id: '',
+            Atendimento_Id:this.props.idAtendimento,
+            Data:'26/06/2020',
+            Canal: canal,
+            Time:'18:30',
+            Atendente_Id: 1,
+            Programa: programa,
+            Tipo_Menssagem: this.state.tipoMenssagem,
+            Menssagem: this.state.conteudoMenssagem
         }
 
         this.props.handleAddMessage(dataSend)
+    }
+
+    //PROCURAR CLIENTE POR OUTROS ATRIBUTOS
+    handleShowUserSearch = () =>{
+        if(this.state.showUserList){
+            this.setState({showUserList: false})
+            return
+        }
+        this.setState({showUserList: true})
+    }
+
+    handleSetUserBySearch = (user) =>{
+        this.setState({
+            cpfCnpj: user.CpfCnpj,
+            nome: user.Nome,
+            nomeUsual: user.NomeUsual,
+            telefone:  user.Telefone,
+            email: user.Email,
+            createble: false,
+            modify: true
+        })
     }
 
     render(){
@@ -113,7 +170,7 @@ export default class Atendimento extends Component{
                             name='CPF' id='CPF' required
                             value={this.state.cpfCnpj}
                             onChange={this.handleCpfCnpj}
-                            onBlur={() => console.log("PESQUISA CPF")}
+                            onBlur={(e) => this.handleSearchUserByCpfCpnj(e.target.value)}
                             />
                             <label htmlFor="CPF" className='label-form-atendimento'>CPF/CNPJ</label>
                         </div>
@@ -160,36 +217,20 @@ export default class Atendimento extends Component{
                             />
                             <label htmlFor="E-mail" className='label-form-atendimento'>E-mail</label>
                         </div>
-                        <button className='bnt-source-cliente'>BUSCAR CLIENTE</button>
+                        <button 
+                        onClick={this.handleShowUserSearch}
+                        className='bnt-source-cliente'
+                        >BUSCAR CLIENTE</button>
                     </div>
                     
                     <div>
-                        <div className='search-clientes-area'>
-
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                            <p>A</p>
-                        </div>
+                        {this.state.showUserList &&
+                            <ListUser
+                                users={pessoas}
+                                handleShowUserSearch = {this.handleShowUserSearch}
+                                handleSetUserBySearch = {this.handleSetUserBySearch}
+                            />
+                        }
                     </div>
                    
 
@@ -266,8 +307,10 @@ export default class Atendimento extends Component{
             
                         <button 
                         className='message-input-btn' 
-                        onClick={() =>{
-                             this.handlePrepareSendMessage()
+                        onClick={() =>{ 
+                            if(this.props.idAtendimento){
+                                this.handlePrepareSendMessage()
+                            }
                              console.log(this.props.idAtendimento)
                             }
                         }
