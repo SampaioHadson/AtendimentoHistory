@@ -10,13 +10,13 @@ export default class ListUsers extends Component{
         atributo: '',
         filterOption: '',
         users: '',
-        usersFiltred: ''
+        usersFiltred: '',
+        filterClicable: true
     }
 
     componentDidMount(){
         this.setState({
             users: this.props.users,
-            usersFiltred: this.props.users
         })
     }
 
@@ -30,33 +30,26 @@ export default class ListUsers extends Component{
     }
 
     handleFilterOption = (e) =>{
-        if(this.state.filterText){
-            this.handleFilterUsersByAtributes(this.state.filterText, null, e.target.value)
-        }
         this.setState({filterOption: e.target.value})
     }
 
     handleAtributo = (e) =>{  
-        if(this.state.filterText){
-            this.handleFilterUsersByAtributes(this.state.filterText, e.target.value, null)
-        }
         this.setState({atributo: e.target.value})
     }
 
     handleFilterText = (e) =>{
-        this.handleFilterUsersByAtributes(e.target.value)      
+        this.setState({filterText: e.target.value})
     }
 
     
-    handleFilterUsersByAtributes = (value, atributo, option) =>{
+    handleFilterUsersByAtributes = (value) =>{
          
-       if(!atributo){
-         atributo = this.state.atributo
-       }
+        const atributo = this.state.atributo   
+        const option = this.state.filterOption
        
-       if(!option){
-           option = this.state.filterOption
-       }
+        if(!atributo){return}
+        if(!option){return}
+        if(!value){return}
 
        let usersFiltred;
 
@@ -144,34 +137,73 @@ export default class ListUsers extends Component{
             <div className='search-clientes-container'>
                 <div className='search-cliente-back' onClick={() => this.props.handleShowUserSearch()}/>
                 <div className='search-cliente-front'>
-                    <div className='search-clientes-area-search'>
-                        <select className='message-select'
-                            onChange={this.handleAtributo}        
-                        >
-                                <option value="" className='message-select-option'>Atributo</option>
-                                <option value={0} className='message-select-option'>CPF/CNPJ</option>
-                                <option value={1} className='message-select-option'>Nome</option>
-                                <option value={2} className='message-select-option'>NomeUsual</option>
-                                <option value={3} className='message-select-option'>Telefone</option>
-                                <option value={4} className='message-select-option'>E-mail</option>
-                        </select>
-                        <select className='message-select'
-                            onChange={this.handleFilterOption}   
-                        >
-                                <option value="" className='message-select-option'>Filtro</option>
-                                <option value={0} className='message-select-option'>Igual a</option>
-                                <option value={1} className='message-select-option'>Contém</option>
-                        </select>
-                        <div className='input-container-atendimento' style={{width:'30%'}}>
-                            <input type="text" 
-                            className='input-form-atendimento' 
-                            name='FilterText' id='FilterText' required
-                            value={this.state.filterText}
-                            onChange={this.handleFilterText}
-                            />
-                            <label htmlFor="FilterText" className='label-form-atendimento'>Digite aqui!</label>
-                        </div>
+                    <div className='search-clientes-area-search'
+                        
+                    >
+                            <select className='message-select'
+                                style={{width: '20%'}}
+                                onChange={this.handleAtributo}
+                                onKeyPress={(e) => {
+                                    console.log(e.which)
+                                    if(e.which === 13 && !this.state.filterClicable) {
+                                        e.preventDefault()
+                                        this.handleFilterUsersByAtributes(this.state.filterText)
+                                        this.setState({filterClicable: true})
+                                        return
+                                    }
+                                    console.log('PODE')          
+                                    this.setState({filterClicable: false})
+                                }}
+                            >
+                                    <option value="" className='message-select-option'>Atributo</option>
+                                    <option value={0} className='message-select-option'>CPF/CNPJ</option>
+                                    <option value={1} className='message-select-option'>Nome</option>
+                                    <option value={2} className='message-select-option'>NomeUsual</option>
+                                    <option value={3} className='message-select-option'>Telefone</option>
+                                    <option value={4} className='message-select-option'>E-mail</option>
+                            </select>
+                            <select className='message-select'
+                                style={{width: '20%'}}
+                                onChange={this.handleFilterOption}   
+                                onKeyPress={(e) => {
+                                    console.log(e.which)
+                                    if(e.which === 13 && !this.state.filterClicable) {
+                                        e.preventDefault()
+                                        this.handleFilterUsersByAtributes(this.state.filterText)
+
+                                        this.setState({filterClicable: true})
+                                        return
+                                    }
+                                    console.log('PODE')          
+                                    this.setState({filterClicable: false})
+                                }}
+                            >
+                                    <option value="" className='message-select-option' >Filtro</option>
+                                    <option value={0} className='message-select-option'>Igual a</option>
+                                    <option value={1} className='message-select-option'>Contém</option>
+                            </select>
+                            <div className='input-container-atendimento' style={{width:'25%', marginBottom:'20px'}}>
+                                <input type="text" 
+                                className='input-form-atendimento' 
+                                name='FilterText' id='FilterText' required
+                                value={this.state.filterText}
+                                onChange={this.handleFilterText}
+                                onKeyPress={(e) => {
+                                    console.log(e.which)
+                                    if(e.which === 13) {
+                                        this.handleFilterUsersByAtributes(e.target.value)
+                                        return
+                                    }
+                                }}
+                                />
+                                <label htmlFor="FilterText" className='label-form-atendimento'>Digite aqui!</label>
+                            </div>
+                            <button className='search-user-btn'
+                                onClick={() => this.handleFilterUsersByAtributes(this.state.filterText, null, null) }
+                            >Pesquisa</button>
+
                     </div>
+
                     <div className='search-clientes-area'>
                         <table className='table-container'>
                             <tbody>    

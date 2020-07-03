@@ -27,6 +27,10 @@ export default class Home extends Component{
     }
 
     componentDidMount(){
+        this.handleMountAtendimentos()
+        console.log(this.state.atendimentosNovos)
+    }
+    handleMountAtendimentos = () =>{
         this.setState({
             ...this,
             atendimentosNovos: this.defineListAtendimentos(0),
@@ -34,7 +38,6 @@ export default class Home extends Component{
             atendimentosConcluidos: this.defineListAtendimentos(2),
             menssagens: menssagens
         })
-        console.log(this.state.atendimentosNovos)
     }
     
 
@@ -71,6 +74,7 @@ export default class Home extends Component{
     showPageAtendimento = () =>{
         return(
             <Atendimento
+                    handleCreateAtendimento = {this.handleCreateAtendimento}
                     user = {this.state.userAtendimento}
                     idAtendimento = {this.state.idAtendimento}
                     messages = {this.state.menssagens}
@@ -83,7 +87,6 @@ export default class Home extends Component{
 
     //ESSE MÉTODO CARREGA OS DADOS DE UM CARD PARA A PAG DE ATENDIMENTO
     //É PASSADO PARA O CARD ATRAVÉS DE PROPS
-
     handleLoadPagAtendimentosForCard = (user, menssagens, atendimentoId) =>{
         this.setState({
             userAtendimento: user,
@@ -94,7 +97,7 @@ export default class Home extends Component{
         })
     }
 
-    //SET MESSAGE JSON TESTE
+    //ADD MESSAGE JSON TESTE
     handleAddMessage = (message) =>{
 
         const {Id} = this.state.menssagens[this.state.menssagens.length - 1]
@@ -106,6 +109,15 @@ export default class Home extends Component{
         menssagens.push(messageReady)
         console.log(menssagens)
        this.setState({menssagens: menssagens})
+    }
+
+    //ADD ATENDIMENTO JSON TESTE
+    handleCreateAtendimento = (newAtendimento, solicitacao, resposta) =>{
+        newAtendimento.Id=atendimentos.length + 1
+        console.log(newAtendimento)
+        atendimentos.push(newAtendimento)
+        this.handleMountAtendimentos()
+        return newAtendimento.Id
     }
 
     render(){
