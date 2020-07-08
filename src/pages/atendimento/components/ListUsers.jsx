@@ -46,6 +46,7 @@ export default class ListUsers extends Component{
          
         const atributo = this.state.atributo   
         const option = this.state.filterOption
+        console.log(this.state)
        
         if(!atributo){return}
         if(!option){return}
@@ -57,9 +58,9 @@ export default class ListUsers extends Component{
             switch(parseInt(atributo)){
                 case 0:{
                     if(parseInt(option) === 0){
+                        
                          usersFiltred = this.state.users
-                        .filter(({CpfCnpj})=> CpfCnpj.toLowerCase()
-                            .indexOf(value.toLowerCase())>-1)
+                        .filter(({CpfCnpj})=> CpfCnpj.toLowerCase() === value.toLowerCase())
                             .map((v) =>{return v}) 
                         break
                     }
@@ -72,8 +73,7 @@ export default class ListUsers extends Component{
                 case 1:{
                     if(parseInt(option) === 0){
                         usersFiltred = this.state.users
-                       .filter(({Nome})=> Nome.toLowerCase()
-                           .indexOf(value.toLowerCase())>-1)
+                       .filter(({Nome})=> Nome.toLowerCase() === value.toLowerCase())
                            .map((v) =>{return v}) 
                        break
                    }
@@ -86,8 +86,7 @@ export default class ListUsers extends Component{
                 case 2:{
                     if(parseInt(option) === 0){
                         usersFiltred = this.state.users
-                       .filter(({NomeUsual})=> NomeUsual.toLowerCase()
-                           .indexOf(value.toLowerCase())>-1)
+                       .filter(({NomeUsual})=> NomeUsual.toLowerCase() === value.toLowerCase())
                            .map((v) =>{return v}) 
                        break
                    }
@@ -100,8 +99,7 @@ export default class ListUsers extends Component{
                 case 3:{
                     if(parseInt(option) === 0){
                         usersFiltred = this.state.users
-                       .filter(({Telefone})=> Telefone.toLowerCase()
-                           .indexOf(value.toLowerCase())>-1)
+                       .filter(({Telefone})=> Telefone.toLowerCase() === value.toLowerCase())
                            .map((v) =>{return v}) 
                        break
                    }
@@ -114,16 +112,15 @@ export default class ListUsers extends Component{
                 case 4:{
                     if(parseInt(option) === 0){
                         usersFiltred = this.state.users
-                       .filter(({Email})=> Email.toLowerCase()
-                           .indexOf(value.toLowerCase())>-1)
+                       .filter(({Email})=> Email.toLowerCase() === value.toLowerCase())
                            .map((v) =>{return v}) 
-                       break
+                        break
                    }
-                   usersFiltred = this.state.users
-                   .filter(({Email})=> Email.toLowerCase()
-                           .includes(value.toLowerCase()))
-                           .map((v) =>{return v}) 
-                   break
+                        usersFiltred = this.state.users
+                        .filter(({Email})=> Email.toLowerCase()
+                                .includes(value.toLowerCase()))
+                                .map((v) =>{return v}) 
+                        break
                 }
             }
             this.setState({usersFiltred: usersFiltred, filterText: value }) 
